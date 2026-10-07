@@ -27,18 +27,16 @@ const fileFilter = (req,file,cb) => {
     const allowedTypes = [
         'image/jpeg', 
         'image/jpg', 
-        'image/png', 
-        'image/gif', 
-        'image/webp', 
-        'image/svg+xml'];
+        'image/png',  
+        'image/webp'];
         if (allowedTypes.includes(file.mimetype)){
             cb(null, true);
         } else {
-            cb(new Error('Invalid file type. Only JPG, JPEG, PNG, GIF, WEBP, and SVG image files are allowed!'), false);
+            cb(new Error('Invalid file type. Only JPEG, JPG, PNG and WEBP image files are allowed!'), false);
     }
 };
 
-// Initialize multer upload instance(single file with fieldname 'coverImage')//
+// Initialize multer upload instance
 const upload = multer({
     storage:storage,
     fileFilter:fileFilter,
