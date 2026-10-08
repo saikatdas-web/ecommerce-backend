@@ -1,4 +1,3 @@
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const generateToken = require("../utils/generateToken");
 const User = require("../models/User");
@@ -114,7 +113,7 @@ const login = async (req,res) => {
         console.log(err.message)
 
         res.status(500).json({
-            success:true,
+            success:false,
             message:"An internal server error occurred"
         });
     }
