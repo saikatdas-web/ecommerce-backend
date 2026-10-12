@@ -2,7 +2,9 @@ const express = require("express");
 const path = require("path");
 const dotenv = require("dotenv");
 const connectDB = require('./config/connectDB');
+const authRoutes = require("./routes/authRoutes");
 
+const productRoutes = require("./routes/productRoutes");
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,8 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 // Serve uploaded images
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// Route
-app.use("/api", router);
+// Routes
+app.use("/api/products", productRoutes);
+app.use("/api/auth", authRoutes);
 
 // Error handling middleware
 app.use((err,req,res,next) => {
