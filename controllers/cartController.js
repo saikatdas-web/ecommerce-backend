@@ -235,6 +235,13 @@ const removeFromCart = async (req, res) => {
         //Extracted the product ID
         const { productId } = req.body;
 
+        if(!productId) {
+            return res.status(400).json({
+             success:false,
+             message:"ProductId is required"   
+            });
+        }
+
         //Find the user's cart
         const cart = await Cart.findOne({ user: req.user._id });
 
