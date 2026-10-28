@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const connectDB = require('./config/connectDB');
 const authRoutes = require("./routes/authRoutes");
 const cartRoutes = require("./routes/cartRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 const productRoutes = require("./routes/productRoutes");
 dotenv.config();
@@ -24,6 +25,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/products", productRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/cart", cartRoutes);
+app.use("/api/MyOrder",orderRoutes);
 
 // Error handling middleware
 app.use((err,req,res,next) => {
